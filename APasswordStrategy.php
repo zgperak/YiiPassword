@@ -147,7 +147,7 @@ abstract class APasswordStrategy extends CValidator {
 				$upper = implode("",$matches[0]);
 			}
 			if (mb_strlen($upper) < $this->minUpperCaseLetters) {
-				$this->addError($object,$attribute,Yii::t('passwordStrategy','n==1#{attribute} should contain at least {min} upper case character|n>1#{attribute} should contain at least {min} upper case characters.',array($this->minUpperCaseLetters,'min'=>$this->minUpperCaseLetters)));
+				$this->addError($object,$attribute,Yii::t('passwordStrategy','n==1#{attribute} should contain at least {min} upper case character|n>1#{attribute} should contain at least {min} upper case characters.',array($this->minUpperCaseLetters,'{min}'=>$this->minUpperCaseLetters)));
 			#	$this->addError($object,$attribute,"{attribute} should contain at least ".$this->minUpperCaseLetters." upper case ".($this->minUpperCaseLetters == 1 ? "character" : "characters"));
 				return false;
 			}
@@ -159,7 +159,7 @@ abstract class APasswordStrategy extends CValidator {
 				$lower = implode("",$matches[0]);
 			}
 			if (mb_strlen($lower) < $this->minLowerCaseLetters) {
-				$this->addError($object,$attribute,Yii::t('passwordStrategy','n==1#{attribute} should contain at least {min} lower case character|n>1#{attribute} should contain at least {min} lower case characters.',array($this->minLowerCaseLetters,'min'=>$this->minLowerCaseLetters)));
+				$this->addError($object,$attribute,Yii::t('passwordStrategy','n==1#{attribute} should contain at least {min} lower case character|n>1#{attribute} should contain at least {min} lower case characters.',array($this->minLowerCaseLetters,'{min}'=>$this->minLowerCaseLetters)));
 #				$this->addError($object,$attribute,"{attribute} should contain at least ".$this->minLowerCaseLetters." lower case ".($this->minLowerCaseLetters == 1 ? "character" : "characters"));
 				return false;
 			}
@@ -171,7 +171,7 @@ abstract class APasswordStrategy extends CValidator {
 				$special = implode("",$matches[0]);
 			}
 			if (mb_strlen($special) < $this->minSpecialCharacters) {
-				$this->addError($object,$attribute,Yii::t('passwordStrategy','n==1#{attribute} should contain at least {min} non alpha numeric character|n>1#{attribute} should contain at least {min} non alpha numeric characters.',array($this->minSpecialCharacters,'min'=>$this->minSpecialCharacters)));
+				$this->addError($object,$attribute,Yii::t('passwordStrategy','n==1#{attribute} should contain at least {min} non alpha numeric character|n>1#{attribute} should contain at least {min} non alpha numeric characters.',array($this->minSpecialCharacters,'{min}'=>$this->minSpecialCharacters)));
 				#$this->addError($object,$attribute,"{attribute} should contain at least ".$this->minSpecialCharacters." non alpha numeric ".($this->minSpecialCharacters == 1 ? "character" : "characters"));
 				return false;
 			}
