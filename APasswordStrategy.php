@@ -123,10 +123,12 @@ abstract class APasswordStrategy extends CValidator {
 			$this->addError($object,$attribute,Yii::t('vendor.zgperak.YiiPasswordBehavior.passwordStrategy','{attribute} is too short, minimum is {num} characters.',array('{num}'=>$this->minLength)));
 			return false;
 		}
+
 		if ($this->maxLength && $length > $this->maxLength) {
 			$this->addError($object,$attribute,Yii::t('YiiPasswordBehavior.passwordStrategy','{attribute} is too long, maximum is {num} characters.',array('{num}'=>$this->minLength)));
 			return false;
 		}
+
 		if ($this->minDigits) {
 			$digits = "";
 			if (preg_match_all("/[\d+]/u",$password,$matches)) {
@@ -138,6 +140,7 @@ abstract class APasswordStrategy extends CValidator {
 				return false;
 			}
 		}
+
 		if ($this->minUpperCaseLetters) {
 			$upper = "";
 			if (preg_match_all("/[A-Z]/u",$password,$matches)) {
@@ -149,6 +152,7 @@ abstract class APasswordStrategy extends CValidator {
 				return false;
 			}
 		}
+
 		if ($this->minLowerCaseLetters) {
 			$lower = "";
 			if (preg_match_all("/[a-z]/u",$password,$matches)) {
@@ -160,6 +164,7 @@ abstract class APasswordStrategy extends CValidator {
 				return false;
 			}
 		}
+
 		if ($this->minSpecialCharacters) {
 			$special = "";
 			if (preg_match_all("/[".implode("|",$this->specialCharacters)."]/u",$password,$matches)) {
