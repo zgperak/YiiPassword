@@ -116,7 +116,7 @@ abstract class APasswordStrategy extends CValidator {
 	 */
 	protected function validateAttribute($object, $attribute)
 	{
-		Yii::app()->messages->basePath =Yii::getPathOfAlias('vendor.zgperak.YiiPasswordBehavior.messages');
+		Yii::app()->messages->basePath =Yii::getPathOfAlias('vendor.zgperak.yiipassword.messages');
 		$password = $object->{$attribute};
 		$length = mb_strlen($password);
 		if ($this->minLength && $length < $this->minLength) {
