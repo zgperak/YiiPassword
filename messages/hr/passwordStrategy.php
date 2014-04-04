@@ -1,5 +1,4 @@
 <?php
-
 return array(
 	'{attribute} is too short, minimum is {num} characters.'=>'{attribute} ima premalo znakova, treba imati bar {num} znakova.',
 	'{attribute} is too long, maximun is {num} characters.'=>'{attribute} ima previše znakova, može imati najviše {num} znakova.',
