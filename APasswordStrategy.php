@@ -116,14 +116,15 @@ abstract class APasswordStrategy extends CValidator {
 	 */
 	protected function validateAttribute($object, $attribute)
 	{
+		Yii::app()->messages->basePath =Yii::getPathOfAlias('vendor.zgperak.YiiPasswordBehavior.messages');
 		$password = $object->{$attribute};
 		$length = mb_strlen($password);
 		if ($this->minLength && $length < $this->minLength) {
-			$this->addError($object,$attribute,Yii::t('passwordStrategy','{attribute} is too short, minimum is {num} characters.',array('{num}'=>$this->minLength)));
+			$this->addError($object,$attribute,Yii::t('vendor.zgperak.YiiPasswordBehavior.passwordStrategy','{attribute} is too short, minimum is {num} characters.',array('{num}'=>$this->minLength)));
 			return false;
 		}
 		if ($this->maxLength && $length > $this->maxLength) {
-			$this->addError($object,$attribute,Yii::t('passwordStrategy','{attribute} is too long, maximum is {num} characters.',array('{num}'=>$this->minLength)));
+			$this->addError($object,$attribute,Yii::t('YiiPasswordBehavior.passwordStrategy','{attribute} is too long, maximum is {num} characters.',array('{num}'=>$this->minLength)));
 			return false;
 		}
 		if ($this->minDigits) {
@@ -143,7 +144,7 @@ abstract class APasswordStrategy extends CValidator {
 				$upper = implode("",$matches[0]);
 			}
 			if (mb_strlen($upper) < $this->minUpperCaseLetters) {
-				$this->addError($object,$attribute,Yii::t('passwordStrategy','{attribute} should contain at least {min} upper case n==1#character|n>1#characters.',array('min'=>$this->minUpperCaseLetters, $this->minUpperCaseLetters)));
+				$this->addError($object,$attribute,Yii::t('passwordStrategy','n==1#{attribute} should contain at least {min} upper case character|n>1#{attribute} should contain at least {min} upper case characters.',array($this->minUpperCaseLetters,'min'=>$this->minUpperCaseLetters)));
 			#	$this->addError($object,$attribute,"{attribute} should contain at least ".$this->minUpperCaseLetters." upper case ".($this->minUpperCaseLetters == 1 ? "character" : "characters"));
 				return false;
 			}
@@ -154,7 +155,7 @@ abstract class APasswordStrategy extends CValidator {
 				$lower = implode("",$matches[0]);
 			}
 			if (mb_strlen($lower) < $this->minLowerCaseLetters) {
-				$this->addError($object,$attribute,Yii::t('passwordStrategy',"{attribute} should contain at least {min} lower case n==1#character|n>1#characters.",array('min'=>$this->minLowerCaseLetters, $this->minLowerCaseLetters)));
+				$this->addError($object,$attribute,Yii::t('passwordStrategy','n==1#{attribute} should contain at least {min} lower case character|n>1#{attribute} should contain at least {min} lower case characters.',array($this->minLowerCaseLetters,'min'=>$this->minLowerCaseLetters)));
 #				$this->addError($object,$attribute,"{attribute} should contain at least ".$this->minLowerCaseLetters." lower case ".($this->minLowerCaseLetters == 1 ? "character" : "characters"));
 				return false;
 			}
@@ -165,11 +166,12 @@ abstract class APasswordStrategy extends CValidator {
 				$special = implode("",$matches[0]);
 			}
 			if (mb_strlen($special) < $this->minSpecialCharacters) {
-				$this->addError($object,$attribute,Yii::t('passwordStrategy',"{attribute} should contain at least {min} non alpha numeric n==1#character|n>1#characters.",array('min'=>$this->minSpecialCharacters, $this->minSpecialCharacters)));
+				$this->addError($object,$attribute,Yii::t('passwordStrategy','n==1#{attribute} should contain at least {min} non alpha numeric character|n>1#{attribute} should contain at least {min} non alpha numeric characters.',array($this->minSpecialCharacters,'min'=>$this->minSpecialCharacters)));
 				#$this->addError($object,$attribute,"{attribute} should contain at least ".$this->minSpecialCharacters." non alpha numeric ".($this->minSpecialCharacters == 1 ? "character" : "characters"));
 				return false;
 			}
 		}
+
 		return true;
 	}
 	/**
