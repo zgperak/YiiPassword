@@ -1,8 +1,8 @@
 {
-    "name": "phpnode/yiipassword",
+    "name": "zgperak/YiiPasswordBehavior",
     "description": "Password strategies for the Yii PHP framework.",
     "keywords": ["password", "bcrypt"],
-    "version": "0.0.1",
+    "version": "0.0.2",
     "type": "yii-extension",
     "license": "BSD-3-Clause",
     "autoload": {
@@ -17,9 +17,9 @@
     },
     "authors": [
         {
-            "name": "Charles Pick",
-            "email": "charles.pick@gmail.com",
-            "homepage": "http://github.com/phpnode"
+            "name": "Tomislav Perkovic",
+            "email": "zgperak@gmail.com",
+            "homepage": "http://github.com/zgperak"
         }
     ]
 }

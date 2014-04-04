@@ -119,11 +119,11 @@ abstract class APasswordStrategy extends CValidator {
 		$password = $object->{$attribute};
 		$length = mb_strlen($password);
 		if ($this->minLength && $length < $this->minLength) {
-			$this->addError($object,$attribute,Yii::t('passwordStrategy',"{attribute} is too short, minimum is {num} characters.",array('num'=>$this->minLength)));
+			$this->addError($object,$attribute,Yii::t('passwordStrategy','{attribute} is too short, minimum is {num} characters.',array('{num}'=>$this->minLength)));
 			return false;
 		}
 		if ($this->maxLength && $length > $this->maxLength) {
-			$this->addError($object,$attribute,Yii::t('passwordStrategy',"{attribute} is too long, maximum is {num} characters.",array('num'=>$this->minLength)));
+			$this->addError($object,$attribute,Yii::t('passwordStrategy','{attribute} is too long, maximum is {num} characters.',array('{num}'=>$this->minLength)));
 			return false;
 		}
 		if ($this->minDigits) {
@@ -132,7 +132,7 @@ abstract class APasswordStrategy extends CValidator {
 				$digits = implode("",$matches[0]);
 			}
 			if (mb_strlen($digits) < $this->minDigits) {
-				$this->addError($object,$attribute,Yii::t('passwordStrategy',"{attribute} should contain at least {min} n==1#digit|n>1#digits.",array('min'=>$this->minLength, $this->minLength)));
+				$this->addError($object,$attribute,Yii::t('passwordStrategy','n==1#{attribute} should contain at least {min} digit|n>1#{attribute} should contain at least {min} digits.', array($this->minDigits,'{min}'=>$this->minDigits),null,'hr'));
 				#$this->addError($object,$attribute,"{attribute} should contain at least ".$this->minDigits." ".($this->minDigits == 1 ? "digit" : "digits"));
 				return false;
 			}
@@ -143,7 +143,7 @@ abstract class APasswordStrategy extends CValidator {
 				$upper = implode("",$matches[0]);
 			}
 			if (mb_strlen($upper) < $this->minUpperCaseLetters) {
-				$this->addError($object,$attribute,Yii::t('passwordStrategy',"{attribute} should contain at least {min} upper case n==1#character|n>1#characters.",array('min'=>$this->minUpperCaseLetters, $this->minUpperCaseLetters)));
+				$this->addError($object,$attribute,Yii::t('passwordStrategy','{attribute} should contain at least {min} upper case n==1#character|n>1#characters.',array('min'=>$this->minUpperCaseLetters, $this->minUpperCaseLetters)));
 			#	$this->addError($object,$attribute,"{attribute} should contain at least ".$this->minUpperCaseLetters." upper case ".($this->minUpperCaseLetters == 1 ? "character" : "characters"));
 				return false;
 			}
