@@ -2,7 +2,7 @@
     "name": "zgperak/yiipassword",
     "description": "Password strategies for the Yii PHP framework.",
     "keywords": ["password", "bcrypt"],
-    "version": "0.0.1",
+    "version": "0.0.2",
     "type": "yii-extension",
     "license": "BSD-3-Clause",
     "autoload": {
