@@ -120,12 +120,12 @@ abstract class APasswordStrategy extends CValidator {
 		$password = $object->{$attribute};
 		$length = mb_strlen($password);
 		if ($this->minLength && $length < $this->minLength) {
-			$this->addError($object,$attribute,Yii::t('vendor.zgperak.YiiPasswordBehavior.passwordStrategy','{attribute} is too short, minimum is {num} characters.',array('{num}'=>$this->minLength)));
+			$this->addError($object,$attribute,Yii::t('passwordStrategy','{attribute} is too short, minimum is {num} characters.',array('{num}'=>$this->minLength)));
 			return false;
 		}
 
 		if ($this->maxLength && $length > $this->maxLength) {
-			$this->addError($object,$attribute,Yii::t('YiiPasswordBehavior.passwordStrategy','{attribute} is too long, maximum is {num} characters.',array('{num}'=>$this->minLength)));
+			$this->addError($object,$attribute,Yii::t('passwordStrategy','{attribute} is too long, maximum is {num} characters.',array('{num}'=>$this->minLength)));
 			return false;
 		}
 
